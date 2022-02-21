@@ -4,10 +4,13 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import java.awt.Color;
 
 public class MainWindow {
-
+	
 	private JFrame frame;
+	private JTextField txtHello;
 
 	/**
 	 * Launch the application.
@@ -45,12 +48,22 @@ public class MainWindow {
 		shopBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("I pressed that button");
-				ShopDialog shopD = new ShopDialog(); 
+				System.out.println(txtHello.getText());
+				Flight mock = new Flight(); 
+				ShopDialog shopD = new ShopDialog(mock);
+				shopD.setModal(true);
 				shopD.setVisible(true);
 			}
 		});
 		shopBtn.setBounds(189, 225, 117, 29);
 		frame.getContentPane().add(shopBtn);
+		
+		txtHello = new JTextField();
+		txtHello.setBackground(Color.RED);
+		String textField = "Bla"; 
+		txtHello.setText(textField);
+		txtHello.setBounds(198, 180, 130, 26);
+		frame.getContentPane().add(txtHello);
+		txtHello.setColumns(10);
 	}
-
 }
