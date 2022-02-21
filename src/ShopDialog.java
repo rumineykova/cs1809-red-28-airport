@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 
 public class ShopDialog extends JDialog {
 
+	public String data; 
 	private final JPanel contentPanel = new JPanel();
 
 	/**
@@ -15,7 +16,7 @@ public class ShopDialog extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			ShopDialog dialog = new ShopDialog();
+			ShopDialog dialog = new ShopDialog(new Flight());
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -26,7 +27,9 @@ public class ShopDialog extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ShopDialog() {
+	public ShopDialog(Flight data) {
+		System.out.print(data);
+		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());
@@ -37,8 +40,9 @@ public class ShopDialog extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
+				JButton okButton = new JButton("Ok");
+				okButton.setText(data.getFlightNumber());
+				okButton.setActionCommand("OK");	
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
